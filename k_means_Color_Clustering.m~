@@ -11,15 +11,11 @@ means = zeros(k, 3);
 rand_x = ceil(dim*rand(k, 1));
 rand_y = ceil(dim*rand(k, 1));
 
-% Initialization suggested in the assignment
-for j = 1:k
-    means(j,:) = (256 / floor(k+1)) * j;
+for i = j:k
+    means(i,:) = (256 / floor(k+1)) * i;
+for i = 1:k
+    means(i,:) = A(rand_x(i), rand_y(i), :);
 end
-
-% Random Initialization
-% for i = 1:k
-%     means(i,:) = A(rand_x(i), rand_y(i), :);
-% end
 
 
 % array that will store the nearest neighbor for every
