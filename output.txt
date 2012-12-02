@@ -1,0 +1,11 @@
+For image rock-stream.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 33 
+ 		 Mean Square Error: 130875133
+ 	 For K = 3:
+ 		 Iteration number for converge: 21 
+ 		 Mean Square Error: 66490578
+ 	 For K = 4:
+ 		 Iteration number for converge: 41 
+ 		 Mean Square Error: 47460677
+ 

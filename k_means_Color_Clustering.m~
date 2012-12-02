@@ -2,9 +2,7 @@ clear all; close all; clc;
 image_data_path = '/home/bugra/Dropbox/PolyClasses/Fall2012/CS6643-ComputerVision/Projects/Project_2/data';
 addpath(image_data_path);
 raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
-
-
-
+max_iterations = 100;
 for nn = 1:size(raw_image_names,1)
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
         raw_image_size = [333 250];
@@ -30,7 +28,6 @@ for nn = 1:size(raw_image_names,1)
         nearest_mean = zeros(r,c);
         
         % Run k-means
-        max_iterations = 100;
         for itr = 1:max_iterations
             
             % Stores the means to be calculated in this iteration
@@ -79,7 +76,8 @@ for nn = 1:size(raw_image_names,1)
             
             means = new_means;
         end
-        fprintf(sprintf('It takes %d iteration to converge when K is %d', itr, k));
+        converge_str = sprintf('For image %s:\n it takes %d iteration to converge when K is %d', raw_image_names(nn).name, itr, k);
+        fprintf(converge_str);
         
         means = round(means);
         
@@ -101,10 +99,11 @@ for nn = 1:size(raw_image_names,1)
         
         % Save image
         output_str = strcat(raw_image_names(nn).name, '.png');
+        output_str = sprintf(output_str
         imwrite(uint8(round(color_segmented_image)), 'rock_stream.png');
         
         mse = mean_square_error(color_image, color_segmented_image);
-        mse_str = sprintf('Mean square for the image %s:\n error is: %d\n when K is %d', raw_image_names(nn).name, mse, k);
+        mse_str = sprintf('Mean square for the image %s:\n when K = %d error is: %d\n ', raw_image_names(nn).name, k, mse);
         disp(mse_str);
     end
 end
