@@ -12,7 +12,7 @@ mean_square_error_str = 'mse_matrix.mat';
 for nn = 1:size(raw_image_names,1)
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
         raw_image_size = [333 250];
-    elseif stcmpi(raw_image_names(nn).name, 'tiger1.raw')
+    elseif strcmpi(raw_image_names(nn).name, 'tiger1.raw')
         raw_image_size = [461 990];
     end
     
