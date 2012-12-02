@@ -79,7 +79,7 @@ for nn = 1:size(raw_image_names,1)
             
             means = new_means;
         end
-        disp(sprintf('It takes %d iteration to converge when K is %d', itr, k));
+        fprintf(sprintf('It takes %d iteration to converge when K is %d', itr, k));
         
         means = round(means);
         
@@ -104,8 +104,8 @@ for nn = 1:size(raw_image_names,1)
         imwrite(uint8(round(color_segmented_image)), 'rock_stream.png');
         
         mse = mean_square_error(color_image, color_segmented_image);
-        mse_str = sprintf('Mean square for the image: %s and error is: %d when K is %d: .', raw_image_names(nn).name, mse, k);
-        disp(str);
+        mse_str = sprintf('Mean square for the image %s:\n when K = %d error is: %d\n ', raw_image_names(nn).name, k, mse);
+        disp(mse_str);
     end
 end
 

@@ -12,7 +12,7 @@ for nn = 1:size(raw_image_names,1)
         raw_image_size = [461 990];
     end
     
-    raw_image_name = [image_data_path filesep raw_image_names(ii).name];
+    raw_image_name = [image_data_path filesep raw_image_names(nn).name];
     r = raw_image_size(1); c = raw_image_size(2);
     color_image = read_color_raw(raw_image_name, raw_image_size);
     
@@ -79,7 +79,7 @@ for nn = 1:size(raw_image_names,1)
             
             means = new_means;
         end
-        disp(sprintf('It takes %d iteration to converge when K is %d', itr, k));
+        fprintf(sprintf('It takes %d iteration to converge when K is %d', itr, k));
         
         means = round(means);
         
@@ -100,12 +100,12 @@ for nn = 1:size(raw_image_names,1)
         imshow(uint8(round(color_segmented_image))); hold off
         
         % Save image
-        output_str = strcat(raw_image_names(ii).name, '.png');
+        output_str = strcat(raw_image_names(nn).name, '.png');
         imwrite(uint8(round(color_segmented_image)), 'rock_stream.png');
         
         mse = mean_square_error(color_image, color_segmented_image);
-        mse_str = sprintf('Mean square for the image: %s and error is: %d when K is %d: .', raw_image_names(ii).name, mse, k);
-        disp(str);
+        mse_str = sprintf('Mean square for the image %s:\n error is: %d\n when K is %d', raw_image_names(nn).name, mse, k);
+        disp(mse_str);
     end
 end
 
