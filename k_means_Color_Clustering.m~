@@ -1,19 +1,20 @@
 clear all; close all; clc;
-image_data_path = [pwd filesep data];
+image_data_path = [pwd filesep 'data'];
 addpath(image_data_path);
 raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
 max_iterations = 200;
 output_txt_str = 'output.txt';
-result_path = [pwd filesep result';
-dash_str = '--------------------------------------\n';
+result_path = [pwd filesep 'result'];
+dash_str = sprintf('-------------------------------------- \n');
 number_of_k_values = 9;
 mean_square_error_matrix = zeros(size(raw_image_names,1), number_of_k_values);
 mean_square_error_str = 'mse_matrix.mat';
 for nn = 1:size(raw_image_names,1)
+    tic;
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
         raw_image_size = [333 250];
     elseif strcmpi(raw_image_names(nn).name, 'tiger1.raw')
-        raw_image_size = [461 990];
+        raw_image_size = [461 690];
     end
     
     raw_image_name = [image_data_path filesep raw_image_names(nn).name];
@@ -128,9 +129,13 @@ for nn = 1:size(raw_image_names,1)
     fileID = fopen(output_txt_str,'a');
     fprintf(fileID,'%s',dash_str);
     fclose(fileID);
+    fprintf('For image: %s', raw_image_names(nn).name);
+    toc;
 end
 mean_square_error_path = [result_path filesep mean_square_error_str];
 save(mean_square_error_matrix, mean_square_error_path);
+
+for 
 
 figure; hold on
 for ii = 1:k

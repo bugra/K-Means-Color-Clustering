@@ -5,10 +5,13 @@ raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
 max_iterations = 200;
 output_txt_str = 'output.txt';
 result_path = [pwd filesep 'result'];
+figs_path = [pwd filesep 'figs'];
 dash_str = sprintf('-------------------------------------- \n');
-number_of_k_values = 9;
+k_values = 2:10;
+number_of_k_values = length(k_values);
 mean_square_error_matrix = zeros(size(raw_image_names,1), number_of_k_values);
 mean_square_error_str = 'mse_matrix.mat';
+
 for nn = 1:size(raw_image_names,1)
     tic;
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
@@ -27,7 +30,7 @@ for nn = 1:size(raw_image_names,1)
     fprintf(fileID,'%s %s',image_str);
     fclose(fileID);
     
-    for k = 2:10
+    for k = k_values
         
         % Initialization suggested in the assignment
         means = zeros(k, 3);
@@ -133,8 +136,19 @@ for nn = 1:size(raw_image_names,1)
     toc;
 end
 mean_square_error_path = [result_path filesep mean_square_error_str];
-save(mean_square_error_matrix, mean_square_error_path);
-
+save(mean_square_error_path, 'mean_square_error_matrix');
+%%
+mse_values = zeros(1,number_of_k_values);
+for pp = 1:size(raw_image_names,1)
+    mse_values(:) = mean_square_error_matrix(pp,:)';
+    plot(k_values, mse_values);
+    title(sprintf('For image %s:', raw_image_names(pp).name));
+    xlabel('k Values');
+    ylabel('Mean Square Error');
+    fig_path = [figs_path filesep raw_image_names(pp).name '.pdf'];
+    saveas(gcf, fig_path, 'pdf') %Save figure
+end
+%%
 figure; hold on
 for ii = 1:k
    col = (1/255).*means(ii,:);
