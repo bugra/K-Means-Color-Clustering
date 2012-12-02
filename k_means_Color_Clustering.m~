@@ -1,12 +1,18 @@
 clear all; close all; clc;
-image_data_path = '/home/bugra/Dropbox/PolyClasses/Fall2012/CS6643-ComputerVision/Projects/Project_2/data';
+image_data_path = [pwd filesep data];
 addpath(image_data_path);
 raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
-max_iterations = 100;
+max_iterations = 200;
+output_txt_str = 'output.txt';
+result_path = [pwd filesep result';
+dash_str = '--------------------------------------\n';
+number_of_k_values = 9;
+mean_square_error_matrix = zeros(size(raw_image_names,1), number_of_k_values);
+mean_square_error_str = 'mse_matrix.mat';
 for nn = 1:size(raw_image_names,1)
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
         raw_image_size = [333 250];
-    elseif stcmpi(raw_image_names(nn).name, 'tiger1.raw')
+    elseif strcmpi(raw_image_names(nn).name, 'tiger1.raw')
         raw_image_size = [461 990];
     end
     
@@ -14,6 +20,11 @@ for nn = 1:size(raw_image_names,1)
     r = raw_image_size(1); c = raw_image_size(2);
     color_image = read_color_raw(raw_image_name, raw_image_size);
     
+    % Image Name is written on output.txt
+    image_str = sprintf('For image %s:\n', raw_image_names(nn).name);
+    fileID = fopen(output_txt_str,'a');
+    fprintf(fileID,'%s %s',image_str);
+    fclose(fileID);
     
     for k = 2:10
         
@@ -76,8 +87,8 @@ for nn = 1:size(raw_image_names,1)
             
             means = new_means;
         end
-        converge_str = sprintf('For image %s:\n it takes %d iteration to converge when K is %d', raw_image_names(nn).name, itr, k);
-        fprintf(converge_str);
+        converge_str = sprintf('\t For K = %d:\n \t\t Iteration number for converge: %d \n', k, itr);
+        display(converge_str);
         
         means = round(means);
         
@@ -95,19 +106,31 @@ for nn = 1:size(raw_image_names,1)
                 color_segmented_image(ii,jj,:) = means(ind,:);
             end
         end
-        imshow(uint8(round(color_segmented_image))); hold off
+        imshow(uint8(round(color_segmented_image)));
         
         % Save image
-        output_str = strcat(raw_image_names(nn).name, '.png');
-        output_str = sprintf(output_str
-        imwrite(uint8(round(color_segmented_image)), 'rock_stream.png');
+        result_im_str = strcat(raw_image_names(nn).name, num2str(k));
+        result_png_str = strcat(result_im_str, '.png');
+        output_path =[result_path filesep result_png_str];
+        imwrite(uint8(round(color_segmented_image)), output_path);
         
         mse = mean_square_error(color_image, color_segmented_image);
-        mse_str = sprintf('Mean square for the image %s:\n when K = %d error is: %d\n ', raw_image_names(nn).name, k, mse);
+        mse_str = sprintf('\t\t Mean Square Error: %d\n ', mse);
+        
         disp(mse_str);
+        fileID = fopen(output_txt_str,'a');
+        fprintf(fileID,'%s %s',converge_str,mse_str);
+        fclose(fileID);
+        mean_square_error_matrix(nn,k) = mse;
     end
+    
+    % Dash string for separating different images
+    fileID = fopen(output_txt_str,'a');
+    fprintf(fileID,'%s',dash_str);
+    fclose(fileID);
 end
-
+mean_square_error_path = [result_path filesep mean_square_error_str];
+save(mean_square_error_matrix, mean_square_error_path);
 
 figure; hold on
 for ii = 1:k
