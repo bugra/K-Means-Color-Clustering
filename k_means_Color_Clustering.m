@@ -2,7 +2,7 @@ clear all; close all; clc;
 image_data_path = '/home/bugra/Dropbox/PolyClasses/Fall2012/CS6643-ComputerVision/Projects/Project_2/data';
 addpath(image_data_path);
 raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
-max_iterations = 100;
+max_iterations = 200;
 output_txt_str = 'output.txt';
 result_path = '/home/bugra/Dropbox/PolyClasses/Fall2012/CS6643-ComputerVision/Projects/Project_2/result';
 dash_str = '--------------------------------------\n';
