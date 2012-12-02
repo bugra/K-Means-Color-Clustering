@@ -2,9 +2,7 @@ clear all; close all; clc;
 image_data_path = '/home/bugra/Dropbox/PolyClasses/Fall2012/CS6643-ComputerVision/Projects/Project_2/data';
 addpath(image_data_path);
 raw_image_names = dir(fullfile(image_data_path, '/*.raw'));
-
-
-
+max_iterations = 100;
 for nn = 1:size(raw_image_names,1)
     if strcmpi(raw_image_names(nn).name, 'rock-stream.raw')
         raw_image_size = [333 250];
@@ -30,7 +28,6 @@ for nn = 1:size(raw_image_names,1)
         nearest_mean = zeros(r,c);
         
         % Run k-means
-        max_iterations = 100;
         for itr = 1:max_iterations
             
             % Stores the means to be calculated in this iteration
