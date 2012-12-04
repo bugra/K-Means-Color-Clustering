@@ -177,20 +177,27 @@ end
 % Save the mean square error
 mean_square_error_path = [result_path filesep mean_square_error_str];
 save(mean_square_error_path, 'mean_square_error_matrix');
-%%
+%% MEAN SQUARE MATRIX PLOTTING
 %load([pwd filesep '/result/mse_matrix.mat']);
 mse_values = zeros(1,number_of_k_values);
 for pp = 1:size(raw_image_names,1)
+    % Get the mean square error vector for one image, with different k
+    % values
     mse_values(:) = mean_square_error_matrix(pp,:)';
+    % Plot it for one image with different k values
     plot(k_values, mse_values);
     title(sprintf('For image %s:', raw_image_names(pp).name));
     xlabel('k Values');
     ylabel('Mean Square Error');
+    % Format the output file name in order to save as a pdf file
     fig_path = [figs_path filesep raw_image_names(pp).name '.pdf'];
-    saveas(gcf, fig_path, 'pdf') %Save figure
+    % Save the figure as a pdf file
+    saveas(gcf, fig_path, 'pdf') 
 end
-%%
+%% CODEBOOK PLOTTING
 figure; hold on
+% For different k's, I plotted the codebook of the colors which actually 
+% corresponds the mean of the clusters, debugging purposes
 for ii = 1:k
    col = (1/255).*means(ii,:);
    rectangle('Position', [ii, 0, 1, 1], 'FaceColor', col, 'EdgeColor', col);
