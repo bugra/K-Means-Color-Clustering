@@ -49,7 +49,14 @@ for nn = 1:size(raw_image_names,1)
     fclose(fileID);
     
     for k = k_values
-        
+        % K-MEANS ALGORITHM
+%         1) Set $i_c$(iteration count) to 1.
+%         2) Choose a set of K means $m_1(1), m_2(1), \ldots m_K(1)$, 
+%         3) For each vector $x_i$ compute $Dist(x_i, m_k(i_c))$ for each k=1, ..., K and assign $x_i$ to the cluster $C_j$ with the 
+%            nearest mean.(Smallest Distance)
+%         4) Increment $i_c$ by 1 and update the means to get a new set $m_1(i_c), m_2(i_c)$ $, \ldots, m_K(i_c)$
+%         5) Repeat steps 3 and 4 until the clusters do not change; i.e., $C_k(i_c) = C_k(i_c + 1)$ for all k.
+
         % Initialization suggested in the assignment
         means = zeros(k, 3);
         for jj = 1:k
@@ -131,24 +138,27 @@ for nn = 1:size(raw_image_names,1)
                 blue = color_segmented_image(ii,jj,3);
                 
                 % Compute the nearest mean of the individual pixel and 
-                % assign the 
+                % replace the individual pixel value with the mean of 
+                % that cluster
                 diff = ones(k,1)*[red, green, blue] - means;
                 distance = sum(diff.^2, 2);
                 [val ind] = min(distance);
                 color_segmented_image(ii,jj,:) = means(ind,:);
             end
         end
+        % Show the color segmented image
         imshow(uint8(round(color_segmented_image)));
         
-        % Save image
+        % Save the color segmented image image
         result_im_str = strcat(raw_image_names(nn).name, num2str(k));
         result_png_str = strcat(result_im_str, '.png');
         output_path =[result_path filesep result_png_str];
         imwrite(uint8(round(color_segmented_image)), output_path);
         
+        % Compute the mean square error
         mse = mean_square_error(color_image, color_segmented_image);
         mse_str = sprintf('\t\t Mean Square Error: %d\n ', mse);
-        
+        % Show the mean square error
         disp(mse_str);
         fileID = fopen(output_txt_str,'a');
         fprintf(fileID,'%s %s',converge_str,mse_str);
@@ -161,8 +171,10 @@ for nn = 1:size(raw_image_names,1)
     fprintf(fileID,'%s',dash_str);
     fclose(fileID);
     fprintf('For image: %s', raw_image_names(nn).name);
+    % Timing Ends
     toc;
 end
+% Save the mean square error
 mean_square_error_path = [result_path filesep mean_square_error_str];
 save(mean_square_error_path, 'mean_square_error_matrix');
 %%

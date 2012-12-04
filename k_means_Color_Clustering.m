@@ -49,7 +49,14 @@ for nn = 1:size(raw_image_names,1)
     fclose(fileID);
     
     for k = k_values
-        
+        % K-MEANS ALGORITHM
+%         1) Set $i_c$(iteration count) to 1.
+%         2) Choose a set of K means $m_1(1), m_2(1), \ldots m_K(1)$, 
+%         3) For each vector $x_i$ compute $Dist(x_i, m_k(i_c))$ for each k=1, ..., K and assign $x_i$ to the cluster $C_j$ with the 
+%            nearest mean.(Smallest Distance)
+%         4) Increment $i_c$ by 1 and update the means to get a new set $m_1(i_c), m_2(i_c)$ $, \ldots, m_K(i_c)$
+%         5) Repeat steps 3 and 4 until the clusters do not change; i.e., $C_k(i_c) = C_k(i_c + 1)$ for all k.
+
         % Initialization suggested in the assignment
         means = zeros(k, 3);
         for jj = 1:k
