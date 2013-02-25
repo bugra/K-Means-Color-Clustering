@@ -7,31 +7,31 @@ It does not need additional space, though. As the inverse mapping is computed on
 ## Results
 __K = 2__  
 
-![Alt text][2]
+![Alt text][2]  
 __K = 3__  
 
-![Alt text][3]
+![Alt text][3]  
 __K = 4__  
 
-![Alt text][4]
+![Alt text][4]  
 __K = 5__  
 
-![Alt text][5]
+![Alt text][5]  
 __K = 6__  
 
-![Alt text][6]
+![Alt text][6]  
 __K = 7__  
 
-![Alt text][7]
+![Alt text][7]  
 __K = 8__  
 
-![Alt text][8]
+![Alt text][8]  
 __K = 9__  
 
-![Alt text][9]
+![Alt text][9]  
 __K = 10__  
 
-![Alt text][10]
+![Alt text][10]  
 
 [2]: https://raw.github.com/bugra/K-Means-Color-Clustering/master/result/tiger12.png "K=2"
 [3]: https://raw.github.com/bugra/K-Means-Color-Clustering/master/result/tiger13.png "K=3"
