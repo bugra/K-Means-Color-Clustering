@@ -34,6 +34,8 @@ for nn = 1:size(raw_image_names,1)
         raw_image_size = [333 250];
     elseif strcmpi(raw_image_names(nn).name, 'tiger1.raw')
         raw_image_size = [461 690];
+    elseif strcmpi(raw_image_names(nn).name, 'data13.raw')
+        raw_image_size = [240 320];
     end
     
     raw_image_name = [image_data_path filesep raw_image_names(nn).name];
@@ -152,7 +154,10 @@ for nn = 1:size(raw_image_names,1)
         % Save the color segmented image image
         result_im_str = strcat(raw_image_names(nn).name, num2str(k));
         result_png_str = strcat(result_im_str, '.png');
+        result_jpeg_str = strcat(result_im_str, '.jpeg');
         output_path =[result_path filesep result_png_str];
+        imwrite(uint8(round(color_segmented_image)), output_path);
+        output_path =[result_path filesep result_jpeg_str];
         imwrite(uint8(round(color_segmented_image)), output_path);
         
         % Compute the mean square error
@@ -178,21 +183,20 @@ end
 mean_square_error_path = [result_path filesep mean_square_error_str];
 save(mean_square_error_path, 'mean_square_error_matrix');
 %% MEAN SQUARE MATRIX PLOTTING
-%load([pwd filesep '/result/mse_matrix.mat']);
 mse_values = zeros(1,number_of_k_values);
 for pp = 1:size(raw_image_names,1)
     % Get the mean square error vector for one image, with different k
     % values
-    mse_values(:) = mean_square_error_matrix(pp,:)';
+    mse_values = mean_square_error_matrix(pp,:)';
     % Plot it for one image with different k values
-    plot(k_values, mse_values);
+    stem(k_values, mse_values(2:end));
     title(sprintf('For image %s:', raw_image_names(pp).name));
     xlabel('k Values');
     ylabel('Mean Square Error');
     % Format the output file name in order to save as a pdf file
-    fig_path = [figs_path filesep raw_image_names(pp).name '.pdf'];
+    fig_path = [figs_path filesep raw_image_names(pp).name '.jpeg'];
     % Save the figure as a pdf file
-    saveas(gcf, fig_path, 'pdf') 
+    saveas(gcf, fig_path, 'jpeg') 
 end
 %% CODEBOOK PLOTTING
 figure; hold on

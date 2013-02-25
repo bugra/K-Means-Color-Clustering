@@ -56,3 +56,155 @@ For image tiger1.raw:
  		 Iteration number for converge: 89 
  		 Mean Square Error: 95222136
  -------------------------------------- 
+For image data13.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 12 
+ 		 Mean Square Error: 75610482
+ 		 Mean Square Error: 48053629
+ 		 Mean Square Error: 52385901
+ For image data13.raw:
+ For image data13.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 12 
+ 		 Mean Square Error: 176050012
+ 	 For K = 3:
+ 		 Iteration number for converge: 10 
+ 		 Mean Square Error: 84840330
+ 	 For K = 4:
+ 		 Iteration number for converge: 16 
+ 		 Mean Square Error: 70665344
+ 	 For K = 5:
+ 		 Iteration number for converge: 17 
+ 		 Mean Square Error: 34300578
+ 	 For K = 6:
+ 		 Iteration number for converge: 27 
+ 		 Mean Square Error: 28759035
+ 	 For K = 7:
+ 		 Iteration number for converge: 23 
+ 		 Mean Square Error: 24339312
+ 	 For K = 8:
+ 		 Iteration number for converge: 24 
+ 		 Mean Square Error: 19819983
+ 	 For K = 9:
+ 		 Iteration number for converge: 31 
+ 		 Mean Square Error: 17816597
+ 	 For K = 10:
+ 		 Iteration number for converge: 49 
+ 		 Mean Square Error: 15435515
+ -------------------------------------- 
+For image data13.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 12 
+ 		 Mean Square Error: 176050012
+ 	 For K = 3:
+ 		 Iteration number for converge: 10 
+ 		 Mean Square Error: 84840330
+ 	 For K = 4:
+ 		 Iteration number for converge: 16 
+ 		 Mean Square Error: 70665344
+ 	 For K = 5:
+ 		 Iteration number for converge: 17 
+ 		 Mean Square Error: 34300578
+ 	 For K = 6:
+ 		 Iteration number for converge: 27 
+ 		 Mean Square Error: 28759035
+ 	 For K = 7:
+ 		 Iteration number for converge: 23 
+ 		 Mean Square Error: 24339312
+ 	 For K = 8:
+ 		 Iteration number for converge: 24 
+ 		 Mean Square Error: 19819983
+ 	 For K = 9:
+ 		 Iteration number for converge: 31 
+ 		 Mean Square Error: 17816597
+ 	 For K = 10:
+ 		 Iteration number for converge: 49 
+ 		 Mean Square Error: 15435515
+ -------------------------------------- 
+For image data13.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 12 
+ 		 Mean Square Error: 176050012
+ 	 For K = 3:
+ 		 Iteration number for converge: 10 
+ 		 Mean Square Error: 84840330
+ 	 For K = 4:
+ 		 Iteration number for converge: 16 
+ 		 Mean Square Error: 70665344
+ 	 For K = 5:
+ 		 Iteration number for converge: 17 
+ 		 Mean Square Error: 34300578
+ 	 For K = 6:
+ 		 Iteration number for converge: 27 
+ 		 Mean Square Error: 28759035
+ 	 For K = 7:
+ 		 Iteration number for converge: 23 
+ 		 Mean Square Error: 24339312
+ 	 For K = 8:
+ 		 Iteration number for converge: 24 
+ 		 Mean Square Error: 19819983
+ 	 For K = 9:
+ 		 Iteration number for converge: 31 
+ 		 Mean Square Error: 17816597
+ 	 For K = 10:
+ 		 Iteration number for converge: 49 
+ 		 Mean Square Error: 15435515
+ -------------------------------------- 
+For image rock-stream.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 33 
+ 		 Mean Square Error: 359370048
+ 	 For K = 3:
+ 		 Iteration number for converge: 21 
+ 		 Mean Square Error: 174790837
+ 	 For K = 4:
+ 		 Iteration number for converge: 41 
+ 		 Mean Square Error: 119840055
+ 	 For K = 5:
+ 		 Iteration number for converge: 70 
+ 		 Mean Square Error: 95443010
+ 	 For K = 6:
+ 		 Iteration number for converge: 70 
+ 		 Mean Square Error: 81751377
+ 	 For K = 7:
+ 		 Iteration number for converge: 98 
+ 		 Mean Square Error: 73675557
+ 	 For K = 8:
+ 		 Iteration number for converge: 102 
+ 		 Mean Square Error: 66941008
+ 	 For K = 9:
+ 		 Iteration number for converge: 108 
+ 		 Mean Square Error: 61930096
+ 	 For K = 10:
+ 		 Iteration number for converge: 52 
+ 		 Mean Square Error: 57530524
+ -------------------------------------- 
+For image tiger1.raw:
+ 	 For K = 2:
+ 		 Iteration number for converge: 16 
+ 		 Mean Square Error: 1546903096
+ 	 For K = 3:
+ 		 Iteration number for converge: 30 
+ 		 Mean Square Error: 855005978
+ 	 For K = 4:
+ 		 Iteration number for converge: 45 
+ 		 Mean Square Error: 596952282
+ 	 For K = 5:
+ 		 Iteration number for converge: 79 
+ 		 Mean Square Error: 482481386
+ 	 For K = 6:
+ 		 Iteration number for converge: 49 
+ 		 Mean Square Error: 399283270
+ 	 For K = 7:
+ 		 Iteration number for converge: 59 
+ 		 Mean Square Error: 353358061
+ 	 For K = 8:
+ 		 Iteration number for converge: 62 
+ 		 Mean Square Error: 305774731
+ 	 For K = 9:
+ 		 Iteration number for converge: 174 
+ 		 Mean Square Error: 277163900
+ 	 For K = 10:
+ 		 Iteration number for converge: 89 
+ 		 Mean Square Error: 256653705
+ -------------------------------------- 
