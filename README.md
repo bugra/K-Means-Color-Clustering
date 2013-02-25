@@ -2,7 +2,7 @@
 Another implementation of K-means algorithm for color quantization in the images.  This one is substantially commented, so some may find it useful.  
 However, it is slow(even for Matlab) due to inverse mapping. It does not store the cluster assignment of the pixels but calculates the distance from the center of the cluster in every iteration. Therefore, it is not computation efficient.  
 It does not need additional space, though. As the inverse mapping is computed on the fly, there is no need for storing the clustered pixels.  
-`read_color_raw.m`  reads `.raw` color images. `readraw` reads grayscale `.raw` in images, which are both used in `k_means_Color_Clusterin.m`. `mean_square_error.m` computes the euclidean distance between two images by pixel values.   
+`read_color_raw.m`  reads `.raw` color images. `readraw` reads grayscale `.raw` in images, which are both used in `k_means_Color_Clustering.m`. `mean_square_error.m` computes the euclidean distance between two images by pixel values.   
 
 ## Results
 __K = 2__  
