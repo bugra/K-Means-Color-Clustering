@@ -5,23 +5,32 @@ It does not need additional space, though. As the inverse mapping is computed on
 `read_color_raw.m`  reads `.raw` color images. `readraw` reads grayscale `.raw` in images, which are both used in `k_means_Color_Clusterin.m`. `mean_square_error.m` computes the euclidean distance between two images by pixel values.   
 
 ## Results
-__K = 2__
+__K = 2__  
+
 ![Alt text][2]
-__K = 3__
+__K = 3__  
+
 ![Alt text][3]
-__K = 4__
+__K = 4__  
+
 ![Alt text][4]
-__K = 5__
+__K = 5__  
+
 ![Alt text][5]
-__K = 6__
+__K = 6__  
+
 ![Alt text][6]
-__K = 7__
+__K = 7__  
+
 ![Alt text][7]
-__K = 8__
+__K = 8__  
+
 ![Alt text][8]
-__K = 9__
+__K = 9__  
+
 ![Alt text][9]
-__K = 10__
+__K = 10__  
+
 ![Alt text][10]
 
 [2]: https://raw.github.com/bugra/K-Means-Color-Clustering/master/result/tiger12.png "K=2"
